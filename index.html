@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background-color: #f10000;
+            color: white;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            /* background: #000; */
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            /* background-color: rgb(255, 255, 255); */
+            /* box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2); */
+            background: linear-gradient(90deg, #0A0A0A, #4A0000);
+            box-shadow: 0 4px 20px rgba(255, 30, 30, 0.25);
+        }
+
+        header h1 {
+            /* color: #f1b900; */
+            color: #be1c1c;
+            font-size: 45px;
+        }
+
+        nav a {
+            margin-left: 40px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 30px;
+        }
+
+        nav a:hover {
+            /* color: #f1b900; */
+            color: #FF1E1E;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            /* margin-top:-50px; */
+
+        }
+
+        #home {
+            /* margin-top:10px;  */
+            display: flex;
+            height: 100vh;
+            /* background: #f1b900; */
+            color: #000000;
+        }
+
+        .left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 60px;
+        }
+
+        .right {
+            flex: 1;
+        }
+
+        .right img {
+            width: 80%;
+            height: 80%;
+            margin-top: 130px;
+            margin-left: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 10px 35px rgb(255, 189, 189);
+        }
+
+        p {
+            font-size: 50px;
+        }
+
+        /* about */
+        #about {
+            height: 100vh;
+            padding: 20px 60px;
+            /* background-color: #f1b900; */
+        }
+
+        #about h1 {
+            font-size: 80px;
+            margin-bottom: 60px;
+            text-align: center;
+            /* justify-content: center; */
+        }
+
+        /* Third pade */
+        #skills {
+            height: 100vh;
+            padding: 20px 60px;
+            /* background-color: #f1b900; */
+        }
+
+        #skills h1 {
+            font-size: 80px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        #experience {
+            height: 100vh;
+            padding: 20px 60px;
+            /* background-color: #f1b900; */
+        }
+
+        #experience h1 {
+            font-size: 80px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        #project {
+            height: 100vh;
+            padding: 20px 60px;
+            /* background-color: #f1b900; */
+        }
+
+        #project h1 {
+            font-size: 80px;
+            margin-bottom: 60px;
+            text-align: center;
+            /* justify-content: center; */
+        }
+
+        /* Project card styling.*/
+        .project,
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .project-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .project-desc {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .demo-btn,
+        .code-btn {
+            padding: 8px 15px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .demo-btn {
+            background: #FF1E1E;
+        }
+
+        .code-btn {
+            background: #333;
+        }
+
+        .demo-btn:hover,
+        .code-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .coming-soon {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+
+
+        .box {
+            width: calc(33.33% - 20px);
+            height: 300px;
+            /* background: #eee; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 44px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: rgba(255, 30, 30, 0.06);
+            border: 1px solid rgba(255, 30, 30, 0.25);
+            backdrop-filter: blur(8px);
+            color: #ffdddd;
+        }
+
+        .box:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 30, 30, 0.4);
+        }
+
+        /* contact */
+        #contact {
+            height: 100vh;
+            padding: 20px 60px;
+            /* background-color: #f1b900; */
+        }
+
+        #contact h1 {
+            font-size: 80px;
+            margin-bottom: 60px;
+            text-align: center;
+            /* justify-content: center; */
+        }
+
+
+        .social-icons {
+            display: flex;
+            /* justify-content: center;
+            align-items: center; */
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            height: 80px;
+            width: 80px;
+            border-radius: 20%;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+
+        .contact-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .contact-form {
+            /* position: absolute; */
+            height: 450px;
+            width: 700px;
+            border: 0px solid;
+            border-radius: 20px;
+            text-align: center;
+            padding-top: 20px;
+            transform: translateY(50px);
+            /* background-color: #00aaff; */
+            background: conic-gradient(from 180deg at 50% 50%, #a31717, #811f1f, #c54a4a, #de2c2c);
+            animation: rotate 12s linear infinite;
+            background-size: 400% 400%;
+            color: white;
+            font-family: "Poppins", sans-serif;
+        }
+
+        @keyframes rotate {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+
+        .contact-form input,
+        h2 {
+            margin: 20px;
+            height: 40px;
+            width: 80%;
+            border-radius: 5px;
+        }
+
+        .contact-form textarea {
+            width: 80%;
+            margin-top: 15px;
+        }
+
+        button {
+            width: 50%;
+            height: 30px;
+            margin-top: 30px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: linear-gradient(90deg, #4A0000, #FF1E1E);
+            border: none;
+            color: white;
+        }
+
+        button:hover {
+            transform: scale(1.2);
+            color: white;
+            background-color: #1743a3;
+            transform: scale(1.1);
+            background: #FF1E1E;
+
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 1px;
+            /* background: #000000;
+            color: #f1b900; */
+            position: relative;
+            font-size: 14px;
+            /* box-shadow: 0 2px 8px rgba(54, 14, 14, 0.5); */
+            background: linear-gradient(90deg, #0A0A0A, #1A0000);
+            color: #FF1E1E;
+            font-size: 18px;
+            border-top: 2px solid rgba(255, 30, 30, 0.4);
+            box-shadow: 0 -2px 20px rgba(255, 30, 30, 0.2);
+        }
+
+        #home,
+        #about,
+        #skills,
+        #experience,
+        #project,
+        #contact {
+            background: linear-gradient(135deg, #000000 0%, #4A0000 45%, #ce1919 100%);
+            color: white;
+        }
+
+
+        @media(max-width:480px) {
+
+            /* #home, */
+            #about,
+            #skills,
+            #experience,
+            #project,
+            #contact {
+                height: auto !important;
+                padding-top: 80px;
+            }
+
+
+
+            header {
+                padding: 10px 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 15px;
+            }
+
+            #home {
+                flex-direction: column;
+                height: 90vh;
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            #home .left {
+                padding-left: 0;
+            }
+
+            #home h1 {
+                font-size: 40px !important;
+            }
+
+            #home p {
+                font-size: 20px;
+            }
+
+            .right img {
+                width: 70%;
+                height: auto;
+                margin: 20px auto;
+            }
+
+            /* Section Heading */
+            section h1 {
+                font-size: 40px;
+                margin-bottom: 20px;
+            }
+
+            /* About Text */
+            #about p {
+                font-size: 18px;
+                line-height: 26px;
+            }
+
+            #about h1 {
+                font-size: 40px;
+            }
+
+            /* Skills section */
+            #skills h1 {
+                font-size: 40px;
+            }
+
+            .skills .box {
+                width: calc(50% - 15px) !important;
+                font-size: 20px;
+                height: 150px;
+            }
+
+            /* Experience section */
+
+            #experience h1 {
+                font-size: 40px;
+            }
+
+            #experience p {
+                font-size: 18px;
+            }
+
+            #project h1 {
+                font-size: 40px;
+            }
+
+            /* Project card styling.*/
+            .project-content {
+                text-align: center;
+                padding: 20px;
+            }
+
+            .project-title {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+
+            .project-desc {
+                font-size: 16px;
+                margin-bottom: 20px;
+                line-height: 1.4;
+            }
+
+            .project-links {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .demo-btn,
+            .code-btn {
+                padding: 8px 15px;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+
+            .demo-btn {
+                background: #FF1E1E;
+            }
+
+            .code-btn {
+                background: #333;
+            }
+
+            .demo-btn:hover,
+            .code-btn:hover {
+                transform: scale(1.1);
+            }
+
+            .coming-soon {
+                font-size: 14px;
+                opacity: 0.7;
+            }
+
+
+
+            /* Skills & Project Boxes */
+            .box {
+                width: 100%;
+                height: 200px;
+                font-size: 28px;
+            }
+
+            /* CONTACT SECTION */
+            #contact h1 {
+                font-size: 40px;
+            }
+
+            #contact {
+                height: auto;
+                padding-bottom: 150px;
+            }
+
+
+            .contact-box {
+                flex-direction: column;
+                gap: 30px;
+                padding: ;
+            }
+
+            .contact-box h1 {
+                font-size: 40px;
+            }
+
+            .contact-form {
+                width: 100%;
+                height: auto;
+                padding: 20px 0;
+                margin-top: -20px;
+
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                width: 90%;
+            }
+
+            footer p {
+                font-size: 14px;
+            }
+
+            /* .left{
+                margin-right: 50px;
+            } */
+
+
+            .left p {
+                font-size: 20px;
+            }
+
+            .social-icons a {
+                height: 45px;
+                width: 45px;
+                font-size: 30px;
+                margin-top: 20px;
+                /* margin-left: 10px; */
+
+            }
+            .social-icons{
+                margin-right: 50px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Home Page -->
+    <header>
+        <h1>Faizan Shaikh</h1>
+        <!-- Navbar -->
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#project">Project</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div id="home">
+        <div class="left">
+            <h1 style="font-size: 80px;">Hi, I'm Faizan</h1>
+            <p>Frontend Developer | Web Designer</p>
+        </div>
+
+        <div class="right">
+            <a href="https://ibb.co/7tbbX36F"><img src="https://i.ibb.co/r2vvmB1J/abdul.jpg" alt="abdul" border="0"></a>
+        </div>
+    </div>
+    <!-- Second page -->
+    <section id="about">
+        <h1>About Me</h1>
+        <p>Hi, I'm <i>Faizan Shaikh,</i> a passionate Frontend Developer and Web Designer from India. I specialize in
+            creating
+            modern, responsive, and user-friendly websites using HTML, CSS, and JavaScript. I believe that a website is
+            not just a digital presence, but a way to engage users and provide a seamless experience.
+
+            I enjoy transforming ideas into visually appealing and functional websites. From designing layouts to
+            implementing interactive features, I focus on writing clean, maintainable, and efficient code.
+
+            I am constantly learning and exploring new web technologies, frameworks, and design trends to stay
+            up-to-date and improve my skills. My goal is to create projects that not only look good but also solve
+            real-world problems.
+
+            Let’s collaborate to build something amazing and bring your ideas to life!
+        </p>
+    </section>
+    <!-- Third page -->
+    <section id="skills">
+        <h1>Skills</h1>
+        <div class="skills">
+            <div class="box">HTML</div>
+            <div class="box">CSS</div>
+            <div class="box">JavaScript</div>
+            <div class="box">Responsive Web Design</div>
+            <div class="box">Git & GitHub</div>
+            <div class="box">UI/UX Basics</div>
+        </div>
+    </section>
+    <!-- Fourth Page -->
+    <section id="experience">
+        <h1>Experience</h1>
+        <p>“I have hands-on experience building responsive and user-friendly websites using modern frontend
+            technologies. I’ve worked on converting UI designs into clean and structured code, creating reusable
+            components, integrating APIs, and improving page performance. I regularly use Git and GitHub for version
+            control, fix UI bugs, and test layouts across different devices. My focus is always on writing clean code,
+            smooth interactions, and delivering a fast, reliable user experience.”</p>
+    </section>
+
+
+    <section id="project">
+        <h1>Projects</h1>
+        <div class="project">
+            <!-- Your Profile Card Project -->
+            <div class="box">
+                <div class="project-content">
+                    <h3 class="project-title">🎨 Profile Card</h3>
+                    <p class="project-desc">Beautiful animated profile card with glassmorphism effect</p>
+                    <div class="project-links">
+                        <a href="https://faizanshaikh004.github.io/My-profile-card/" target="_blank"
+                            class="demo-btn">Live Demo</a>
+                        <a href="https://github.com/FaizanShaikh004/My-profile-card" target="_blank"
+                            class="code-btn">Source Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project second -->
+            <div class="box">
+                <div class="project-content">
+                    <h3 class="project-title">🛍️E-commerce Product Page</h3>
+                    <p class="project-desc">Modern product page with clean UI</p>
+                    <div class="project-links">
+                        <a href=" https://faizanshaikh004.github.io/Product-page/" target="_blank" class="demo-btn">Live
+                            Demo</a>
+                        <a href="http://github.com/FaizanShaikh004/Product-page" target="_blank" class="code-btn">Source
+                            Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project third -->
+            <div class="box">
+                <div class="project-content">
+                    <h3 class="project-title">📝Registration Form</h3>
+                    <p class="project-desc">Responsive contact form with validation & UI design</p>
+                    <div class="project-link">
+                        <a href="https://faizanshaikh004.github.io/Form/" target="_blank" class="demo-btn">Live Demo</a>
+                        <a href="https://github.com/FaizanShaikh004/Form" target="_blank" class="code-btn">Source
+                            Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">Project 4<br><span class="coming-soon">(Coming Soon)</span></div>
+            <div class="box">Project 5<br><span class="coming-soon">(Coming Soon)</span></div>
+            <div class="box">Project 6<br><span class="coming-soon">(Coming Soon)</span></div>
+        </div>
+    </section>
+
+    <!-- Fifth page -->
+    <section id="contact">
+        <h1>Contact Me</h1>
+
+        <div class="contact-box">
+            <div class="left">
+                <h2>Let's work together</h2>
+                <p>Email: abdulkhalik20044@gmail.com</p>
+                <p>Phone: +91 93549 48673</p>
+                <p>Location: India</p>
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="http://instagram.com/f_a_i_z_a_n_0_0_4" target="_blank"
+                        style=" background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/faizan.sheikh.772226" target="_blank" style="background:#4267B2;">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/919354948673" target="_blank" style="background:#18d914;">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:abdulkhalik20044@gmail.com" title="Send Mail"
+                        style="  background: linear-gradient(135deg, #D93025, #3538ea, #1aff00);">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/FaizanShaikh004" target="_blank" title="GitHub Profile" style="
+                          background: rgb(0, 0, 0); ">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+                </div>
+
+
+            </div>
+
+            <!-- Contact Form Container -->
+            <div class="contact-form">
+                <h2 style="font-size: 40px;">Contact Me</h2>
+                <form>
+                    <div> <input type="text" placeholder="Your Name" required></div>
+                    <div> <input type="email" placeholder="Your Email" required></div>
+                    <div> <textarea placeholder="Your Message" rows="4" required></textarea></div>
+                    <div> <button type="submit">Submit</button></div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <p>© 2025 Faizan Shaikh❤️ — All Rights Reserved</p>
+    </footer>
+
+</body>
+
+</html>
